@@ -1,7 +1,7 @@
-fastapi==0.110.0
+fastapi==0.95.2
 uvicorn[standard]==0.29.0
 SQLAlchemy==2.0.30
 jinja2==3.1.3
 python-multipart==0.0.9
-pydantic==2.6.4
-psycopg2-binary==2.9.9  # Only if you're using PostgreSQL on Render
+pydantic==1.10.13
+psycopg2-binary==2.9.9  # only if you're using PostgreSQL
