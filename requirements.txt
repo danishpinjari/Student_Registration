@@ -4,4 +4,4 @@ SQLAlchemy==2.0.30
 jinja2==3.1.3
 python-multipart==0.0.9
 pydantic==1.10.13
-psycopg2-binary==2.9.9  # only if you're using PostgreSQL
+psycopg2-binary==2.9.9  # Optional: only include if using PostgreSQL
