@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Registration | Uplers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha384-k6RqeWeci5ZR/Lv4MR0sA0FfDOMt23cez/3paNdF+e1z5l5d5a5b5b5b5b5b5b5" crossorigin="anonymous">
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="form-container">
+  <h2>Student Registration Form</h2>
+  <form>
+    <label for="name">Full Name *</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email">Email *</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="phone">Phone Number *</label>
+    <input type="tel" id="phone" name="phone" required>
+
+    <label for="enrollment">Enrollment Number *</label>
+    <input type="text" id="enrollment" name="enrollment" required>
+
+    <label for="university">University/Institute Name *</label>
+    <input type="text" id="university" name="university" required>
+
+    <label for="course">Course *</label>
+    <select id="course" name="course" required>
+      <option value="">Select</option>
+      <option value="B.Tech">B.Tech</option>
+      <option value="M.Tech">M.Tech</option>
+      <option value="B.Sc">B.Sc</option>
+      <option value="M.Sc">M.Sc</option>
+      <option value="Diploma">Diploma</option>
+    </select>
+
+    <label for="branch">Branch *</label>
+    <input type="text" id="branch" name="branch" placeholder="e.g. CSE, IT, ECE" required>
+
+    <label for="year">Year of Study *</label>
+    <select id="year" name="year" required>
+      <option value="">Select</option>
+      <option value="1">1st Year</option>
+      <option value="2">2nd Year</option>
+      <option value="3">3rd Year</option>
+      <option value="4">4th Year</option>
+    </select>
+
+    <label for="skills">Technical Skills</label>
+    <input type="text" id="skills" name="skills" placeholder="e.g. Python, Java, SQL">
+
+    <label for="resume">Upload Resume (PDF) *</label>
+    <div class="file-upload">
+      <input type="file" id="resume" name="resume" accept=".pdf" required>
+    </div>
+
+    <button class="submit-btn" type="submit">Register</button>
+  </form>
+</div>
+
+<script>
+  document.querySelector('form').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    const response = await fetch("http://127.0.0.1:8000/register-student", {
+      method: "POST",
+      body: formData
+    });
+
+    const result = await response.json();
+    alert(result.message);
+    form.reset();
+  });
+</script>
+
+</body>
+</html>

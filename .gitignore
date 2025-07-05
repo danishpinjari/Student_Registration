@@ -1,0 +1,53 @@
+# Environment variables
+.env
+.env.local
+
+# Byte-compiled / optimized files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Database files
+*.sqlite
+*.db
+
+# Logs and diagnostics
+*.log
+*.sql
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependency directories
+venv/
+env/
+.venv/
+ENV/
+
+# Build and distribution files
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Python cache
+.pytest_cache/
+.mypy_cache/
+
+# Docker files
+docker-compose.override.yml
+
+# macOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+# SQLAlchemy migrations (if using)
+migrations/
+
+# Render specific
+render.yaml
