@@ -11,7 +11,7 @@
 <body>
 <div class="form-container">
   <h2>Student Registration Form</h2>
-  <form>
+  <form id="registration-form">
     <label for="name">Full Name *</label>
     <input type="text" id="name" name="name" required>
 
@@ -62,20 +62,29 @@
 </div>
 
 <script>
-  document.querySelector('form').addEventListener('submit', async function (e) {
+  document.getElementById('registration-form').addEventListener('submit', async function (e) {
     e.preventDefault();
 
     const form = e.target;
     const formData = new FormData(form);
 
-    const response = await fetch("http://127.0.0.1:8000/register-student", {
-      method: "POST",
-      body: formData
-    });
+    try {
+      const response = await fetch("/register-student", {
+        method: "POST",
+        body: formData
+      });
 
-    const result = await response.json();
-    alert(result.message);
-    form.reset();
+      const result = await response.json();
+
+      if (response.ok) {
+        alert(result.message);
+        form.reset();
+      } else {
+        alert(result.detail || "Something went wrong.");
+      }
+    } catch (error) {
+      alert("Server error: " + error.message);
+    }
   });
 </script>
 
