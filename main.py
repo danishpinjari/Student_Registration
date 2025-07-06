@@ -8,8 +8,11 @@ from fastapi.templating import Jinja2Templates
 from datetime import datetime
 from database import get_db, create_student
 from sqlalchemy.orm import Session
-from models import Student
+from models import Student,Base, engine
+from dotenv import load_dotenv
 import uuid
+
+
 
 app = FastAPI()
 
@@ -26,7 +29,7 @@ app.add_middleware(
 os.makedirs("static/resumes", exist_ok=True)
 app.mount("/static", StaticFiles(directory="static"), name="static")
 templates = Jinja2Templates(directory="templates")
-
+Base.metadata.create_all(bind=engine)
 
 @app.post("/register-student")
 async def register_student(
