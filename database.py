@@ -1,7 +1,11 @@
 from sqlalchemy.orm import Session
 from models import Student, SessionLocal
+import os
 from dotenv import load_dotenv
-load_dotenv()
+
+# Only load .env locally
+if os.getenv("RENDER") != "true":
+    load_dotenv()
 
 def get_db():
     db = SessionLocal()
